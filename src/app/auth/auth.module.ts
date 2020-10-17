@@ -4,7 +4,8 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthComponent } from './auth.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatFormFieldModule, MatInputModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatSliderModule} from '@angular/material';
+import {AuthRoutingModule} from './auth-routing.module';
 
 @NgModule({
   declarations: [LoginComponent, SignupComponent, AuthComponent],
@@ -14,6 +15,11 @@ import {MatFormFieldModule, MatInputModule} from '@angular/material';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCardModule,
+    MatButtonModule,
+    MatRadioModule,
+    MatSliderModule,
+    AuthRoutingModule
   ],
   exports: [AuthComponent]
 })
