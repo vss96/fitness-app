@@ -9,6 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HomeModule} from './home/home.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth-interceptor';
+import { CaloriesComponent } from './calories/calories.component';
+import { CaloriesModule } from './calories/calories.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     AppRoutingModule,
     AuthModule,
     BrowserAnimationsModule,
-    HomeModule
+    HomeModule,
+    CaloriesModule
   ],
   providers: [    {
     provide: HTTP_INTERCEPTORS,
