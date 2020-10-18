@@ -12,15 +12,14 @@ import * as moment from "moment";
 })
 export class LoginComponent {
     constructor(private authService: AuthService) {}
-    emailFormControl = new FormControl('', [
+    userName = new FormControl('', [
         Validators.required,
-        Validators.email,
     ]);
     passwordFormControl = new FormControl('', [Validators.required]);
     matcher = new InputValidator();
     handleLogin() {
-        alert([this.emailFormControl.value,  this.passwordFormControl.value].join('**'));
-        this.authService.login(this.emailFormControl.value, this.passwordFormControl.value)
+        alert([this.userName.value,  this.passwordFormControl.value].join('**'));
+        this.authService.login(this.userName.value, this.passwordFormControl.value)
         .subscribe(data => this.setSession(data))
     }
 

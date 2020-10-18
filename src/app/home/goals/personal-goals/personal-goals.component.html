@@ -1,0 +1,22 @@
+<h1>Personal Goals</h1>
+        <form [formGroup]="taskGroup" class="add-task-form">
+            <mat-form-field class="login-full-width" appearance="outline">
+                <mat-label>Title</mat-label>
+                <input matInput formControlName="title" type="text" [(ngModel)]="value">
+                <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+            <mat-form-field class="login-full-width" appearance="outline">
+                <mat-label>Due date</mat-label>
+                <input formControlName="due_date" type="date" matInput [ngModel]="selectedDate">
+            </mat-form-field>
+            <button [disabled]="taskGroup.untouched || taskGroup.invalid"  class="add-goals-button"mat-fab color="primary" (click)="addGoals($event)">
+                <mat-icon>add</mat-icon>
+            </button>
+        </form>
+<mat-selection-list>
+    <mat-list-option color="primary" *ngFor="let goal of tasks" [value]="goal" [selected]="goal.is_completed">
+        {{goal.title}} - {{goal.due_date}}
+    </mat-list-option>
+</mat-selection-list>

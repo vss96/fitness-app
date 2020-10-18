@@ -11,7 +11,7 @@
                                                         <input matInput formControlName="userName" [errorStateMatcher]="matcher"
                                                                placeholder="Ex. pat@login.com">
                                                         <mat-error *ngIf="userName.hasError('email') && !userName.hasError('required')">
-                                                                Username should not be empyy
+                                                                Username should not be empty
                                                         </mat-error>
                                                 </mat-form-field>
                                         </p>
@@ -70,7 +70,7 @@
 
         </mat-step>
         <mat-step>
-                <ng-template matStepLabel>Set your goals</ng-template>
+                <ng-template matStepLabel>Set your daily goals</ng-template>
                 <mat-card>
                         <mat-card-content>
                                 <form class="login-form" [formGroup]="goalsFormGroup">
