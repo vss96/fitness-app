@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from './login/login.component';
-import {SignupComponent} from './signup/signup.component';
-import {GoalsCreatorComponent} from './goals-creator/goals-creator.component';
 import {AccountCreatorStepperComponent} from './account-creator-stepper/account-creator-stepper.component';
 
 

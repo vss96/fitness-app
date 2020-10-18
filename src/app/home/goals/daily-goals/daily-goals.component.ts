@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ApiService} from '../../../api.service';
 
 @Component({
   selector: 'app-daily-goals',
@@ -10,24 +11,25 @@ export class DailyGoalsComponent implements OnInit {
   goals = [
     {
       goal_id: 1,
-      goals: 'Binge watching netflix',
+      goal: '5 squats',
     },
     {
       goal_id: 2,
-      goals: 'Sleep for 3 hrs',
+      goal: '5 push ups',
     },
     {
       goal_id: 3,
-      goals: 'Sleep for 4 hrs',
+      goal: '20 min meditation',
     },
     {
       goal_id: 4,
-      goals: 'Sleep for 5 hrs',
+      goal: 'go to bet before 10 PM',
     },
   ];
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+    this.apiService.getGoalsForUser().subscribe((goals: any) => this.goals = goals);
   }
 
 }

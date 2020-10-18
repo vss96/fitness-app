@@ -18,7 +18,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
             return next.handle(cloned);
         } else {
-            //redirect to login page
+            return next.handle(req);
         }
     }
 }

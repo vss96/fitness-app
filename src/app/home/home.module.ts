@@ -17,6 +17,7 @@ import {MatButtonModule} from '@angular/material';
 import {DailyGoalsComponent} from './goals/daily-goals/daily-goals.component';
 import {PersonalGoalsComponent} from './goals/personal-goals/personal-goals.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {CaloriesModule} from './calories/calories.module';
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import {ReactiveFormsModule} from '@angular/forms';
         MatListModule, MatIconModule, MatToolbarModule, MatButtonModule, MatFormFieldModule, MatCardModule, MatDatepickerModule,
         ReactiveFormsModule,
         MatNativeDateModule,
-        MatInputModule,
+        MatInputModule, CaloriesModule,
     ],
     exports: [HomeComponent, SideNavbarComponent]
 })

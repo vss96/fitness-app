@@ -1,6 +1,8 @@
 import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {InputValidator} from '../utils';
+import {ApiService} from '../../api.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-account-creator-stepper',
@@ -8,14 +10,14 @@ import {InputValidator} from '../utils';
   styleUrls: ['./account-creator-stepper.component.scss']
 })
 export class AccountCreatorStepperComponent implements OnInit {
-  userName = new FormControl('', [
+  username = new FormControl('', [
     Validators.required,
   ]);
   password = new FormControl('', [Validators.required]);
   heightFormControl = new FormControl('', [Validators.required]);
   weightFormControl = new FormControl('', [Validators.required]);
   userDetailsFormGroup = new FormGroup({
-    userName: this.userName,
+    username: this.username,
     password: this.password,
     age: new FormControl('', [Validators.required]),
     gender: new FormControl(''),
@@ -23,7 +25,7 @@ export class AccountCreatorStepperComponent implements OnInit {
     weight: this.weightFormControl
   });
   goalsFormGroup = new FormGroup({
-    goals: new FormControl('', [Validators.required])
+    goal: new FormControl('', [Validators.required])
   });
   genders = [{
     value: 'MALE',
@@ -42,33 +44,25 @@ export class AccountCreatorStepperComponent implements OnInit {
   matcher = new InputValidator();
   selectedGender: string;
   age: string;
-  goals = [
-    {
-      goal_id: 1,
-      goals: 'Binge watching netflix',
-    },
-    {
-      goal_id: 2,
-      goals: 'Sleep for 3 hrs',
-    },
-    {
-      goal_id: 3,
-      goals: 'Sleep for 4 hrs',
-    },
-    {
-      goal_id: 4,
-      goals: 'Sleep for 5 hrs',
-    },
-  ];
+  goals;
   selectedGoals: any;
-  constructor() {
+  constructor(private apiService: ApiService, private router: Router) {
+    console.log(this.apiService.getGoals());
+    this.apiService.getGoals().subscribe(goals => {
+      this.goals = goals;
+      console.log(goals);
+    });
   }
 
   ngOnInit() {
   }
-  addGoals() {
+  createUser() {
     console.log(this.goalsFormGroup);
     console.log(this.userDetailsFormGroup);
-    console.log(this.selectedGoals);
+    console.log(this.selectedGender);
+    const goalIdPair = {};
+    this.goalsFormGroup.value.goals.forEach(x => goalIdPair[x.goal_id] = x.goal);
+    const data = {...this.userDetailsFormGroup.value, goal: goalIdPair};
+    this.apiService.addUser(data).subscribe(_ => this.router.navigateByUrl('/login'));
   }
 }

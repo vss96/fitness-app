@@ -10,7 +10,7 @@ export class SideNavbarComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
 
   sideNavLinks = [{name: 'Home', link: '/home'}, {name: 'Calories', link: '/calories'}, {name: 'Profile', link: '/profile'}];;
-
+  currentTab = 'Home';
 
   private _mobileQueryListener: () => void;
 
@@ -22,5 +22,10 @@ export class SideNavbarComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
+  }
+
+  switchTab(nav) {
+    console.log(nav);
+    this.currentTab = nav.name;
   }
 }

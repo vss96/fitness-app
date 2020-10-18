@@ -4,6 +4,7 @@ import {InputValidator} from '../utils';
 import {AuthService} from '../../../svc/authService'
 import { HttpClient } from '@angular/common/http';
 import * as moment from "moment";
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-login',
@@ -11,22 +12,23 @@ import * as moment from "moment";
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-    constructor(private authService: AuthService) {}
-    userName = new FormControl('', [
+    constructor(private authService: AuthService, private router: Router) {}
+    username = new FormControl('', [
         Validators.required,
     ]);
     passwordFormControl = new FormControl('', [Validators.required]);
     matcher = new InputValidator();
     handleLogin() {
-        alert([this.userName.value,  this.passwordFormControl.value].join('**'));
-        this.authService.login(this.userName.value, this.passwordFormControl.value)
-        .subscribe(data => this.setSession(data))
+        alert([this.username.value,  this.passwordFormControl.value].join('**'));
+        this.authService.login(this.username.value, this.passwordFormControl.value)
+        .subscribe(data => this.setSession(data));
+        this.router.navigateByUrl('');
     }
 
     private setSession(authResult) {
         const expiresAt = moment().add(authResult.expiresIn,'second');
 
-        localStorage.setItem('id_token', authResult.idToken);
+        localStorage.setItem('id_token', authResult.access_token);
         localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
     }          
 
@@ -47,5 +49,5 @@ export class LoginComponent {
         const expiration = localStorage.getItem("expires_at");
         const expiresAt = JSON.parse(expiration);
         return moment(expiresAt);
-    }    
+    }
 }

@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import {environment} from '../environments/environment';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class AuthService {
   constructor(private http: HttpClient) { }
-  private loginUrl = 'localhost:8080/token'
+  private loginUrl = environment.apiUrl + 'token'
   login(username, password){
     const body = new HttpParams()
     .set('username', username)

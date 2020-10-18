@@ -7,7 +7,7 @@ import {AuthModule} from './auth/auth.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HomeModule} from './home/home.module';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { CaloriesComponent } from './home/calories/calories.component';
 import { CaloriesModule } from './home/calories/calories.module';
@@ -22,7 +22,8 @@ import { CaloriesModule } from './home/calories/calories.module';
     AuthModule,
     BrowserAnimationsModule,
     HomeModule,
-    CaloriesModule
+    CaloriesModule,
+    HttpClientModule
   ],
   providers: [    {
     provide: HTTP_INTERCEPTORS,
