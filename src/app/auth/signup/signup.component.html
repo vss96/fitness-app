@@ -25,7 +25,7 @@
             </p>
             <mat-label color="primary">Gender</mat-label>
             <p>
-                <mat-radio-group color="primary" aria-label="Select an option" [ngModel] = "selectedGender">
+                <mat-radio-group color="primary" aria-label="Select an option"> <!--[ngModel] = "selectedGender">-->
                     <mat-radio-button *ngFor="let gender of genders" [value]="gender.value" [checked]="gender.checked">
                         {{gender.label}}
                     </mat-radio-button>
@@ -33,7 +33,7 @@
             </p>
             <mat-label color="primary">Age</mat-label>
             <p>
-                <mat-slider color="primary" min="15" thumbLabel max="60" step="1" [ngModel]="age"></mat-slider>
+                <mat-slider color="primary" min="15" thumbLabel max="60" step="1"></mat-slider> <!--[ngModel]="age"-->
             </p>
             <div class="height">
                 <mat-form-field class="login-full-width" appearance="outline">
