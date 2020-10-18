@@ -30,7 +30,7 @@ import {ReactiveFormsModule} from '@angular/forms';
         MatNativeDateModule,
         MatInputModule,
     ],
-    exports: [HomeComponent]
+    exports: [HomeComponent, SideNavbarComponent]
 })
 export class HomeModule {
 }

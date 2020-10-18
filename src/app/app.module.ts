@@ -9,8 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HomeModule} from './home/home.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth-interceptor';
-import { CaloriesComponent } from './calories/calories.component';
-import { CaloriesModule } from './calories/calories.module';
+import { CaloriesComponent } from './home/calories/calories.component';
+import { CaloriesModule } from './home/calories/calories.module';
 
 @NgModule({
   declarations: [

@@ -1,0 +1,29 @@
+<h1> Calculate your calories </h1>
+<button class="add-goals-button" mat-fab color="primary" (click)="addInput($event)">
+    <mat-icon>add</mat-icon>
+</button>
+<form [formGroup]="calorieFormGroup" class="calorie-form" >
+    <div formArrayName="foodDetails">
+        <div *ngFor="let item of foodDetails.controls; let pointIndex=index;" [formGroupName]="pointIndex">
+            <mat-form-field class="login-full-width" appearance="outline">
+                <mat-label>Favorite food</mat-label>
+                <mat-select formControlName="food">
+                    <mat-option *ngFor="let food of foods" [value]="food">
+                        {{food.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="login-full-width" appearance="outline">
+                <mat-label>Quantity</mat-label>
+                <input matInput formControlName="quantity" type="number">
+            </mat-form-field>
+            <button [disabled]="foodDetails.length === 1" class="delete-button" mat-fab color="primary" (click)="deleteRow(pointIndex)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </div>
+    <mat-label>
+        Calculated Calories: {{calories}}
+    </mat-label>
+    <button color="primary" mat-button>submit</button>
+</form>
